@@ -62,6 +62,18 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
       case "mapType":
         setMapType( map, properties );
         break;
+      case "myLocationEnabled":
+        setMyLocationEnabled( map, properties );
+        break;
+      case "indoorEnabled":
+        setIndoorEnabled( map, properties );
+        break;
+      case "trafficEnabled":
+        setTrafficEnabled( map, properties );
+        break;      
+      case "compassEnabled":
+        setCompassEnabled( map, properties );
+        break;           
     }
   }
 
@@ -93,6 +105,28 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
     if( mapTypeInteger != null ) {
       map.setMapType( mapTypeInteger );
     }
+  }
+
+  private void setMyLocationEnabled( GoogleMap map, Properties properties ) {
+      Boolean isEnabled = properties.getBoolean( "myLocationEnabled" );
+      map.setMyLocationEnabled(isEnabled);
+      map.getUiSettings().setMyLocationButtonEnabled(isEnabled);
+      
+  }
+
+  private void setIndoorEnabled( GoogleMap map, Properties properties ) {
+      Boolean isEnabled = properties.getBoolean( "indoorEnabled" );
+      map.setIndoorEnabled(isEnabled);
+  }
+
+  private void setTrafficEnabled( GoogleMap map, Properties properties ) {
+      Boolean isEnabled = properties.getBoolean( "trafficEnabled" );
+      map.setTrafficEnabled(isEnabled);
+  }
+
+  private void setCompassEnabled( GoogleMap map, Properties properties ) {
+      Boolean isEnabled = properties.getBoolean( "compassEnabled" );
+      map.setCompassEnabled(isEnabled);
   }
 
   @Override
