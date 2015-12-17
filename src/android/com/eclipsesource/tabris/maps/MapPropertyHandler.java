@@ -109,8 +109,8 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
 
   private void setMyLocationEnabled( GoogleMap map, Properties properties ) {
       Boolean isEnabled = properties.getBoolean( "myLocationEnabled" );
-      map.setMyLocationEnabled(isEnabled);
-      map.getUiSettings().setMyLocationButtonEnabled(isEnabled);
+      map.setMyLocationEnabled(true);
+      map.getUiSettings().setMyLocationButtonEnabled(true);
       
   }
 
@@ -121,7 +121,7 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
 
   private void setTrafficEnabled( GoogleMap map, Properties properties ) {
       Boolean isEnabled = properties.getBoolean( "trafficEnabled" );
-      map.setTrafficEnabled(isEnabled);
+      map.setTrafficEnabled(true);
   }
 
 
