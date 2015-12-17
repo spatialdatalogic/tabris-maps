@@ -72,7 +72,7 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
         setTrafficEnabled( map, properties );
         break;      
       case "compassEnabled":
-        setCompassEnabled( map, properties );
+        //setCompassEnabled( map, properties );
         break;           
     }
   }
@@ -124,10 +124,7 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
       map.setTrafficEnabled(isEnabled);
   }
 
-  private void setCompassEnabled( GoogleMap map, Properties properties ) {
-      Boolean isEnabled = properties.getBoolean( "compassEnabled" );
-      map.setCompassEnabled(isEnabled);
-  }
+
 
   @Override
   public Object get( MapHolderView mapHolderView, String property ) {
