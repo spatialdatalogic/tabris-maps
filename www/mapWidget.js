@@ -8,7 +8,7 @@ tabris.registerWidget("ESMap", {
     minZoomLevel: {type: "any", nocache: true},
     maxZoomLevel: {type: "any", nocache: true},
     region: {type: "array", nocache: true},
-    mapType: {type: ["choice", ["none", "hybrid", "normal", "satellite", "terrain", "satelliteflyover", "hybridflyover"]], nocache: true}
+    mapType: {type: ["choice", ["none", "hybrid", "normal", "satellite", "terrain", "satelliteflyover", "hybridflyover"]], nocache: true},
     myLocationEnabled: {type: "boolean", nocache: true},
     trafficEnabled: {type: "boolean", nocache: true},
     indoorEnabled: {type: "boolean", nocache: true},
