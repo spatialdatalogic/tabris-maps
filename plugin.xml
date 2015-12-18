@@ -22,7 +22,10 @@
     <js-module src="www/markerWidget.js" name="marker">
       <runs />
     </js-module>
-
+    
+    <js-module src="www/tileOverlayWidget.js" name="marker">
+      <runs />
+    </js-module>
     <platform name="android">
 
         <info>
@@ -43,6 +46,9 @@
             <meta-data
               android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.marker"
               android:value="com.eclipsesource.tabris.maps.MarkerOperator" />
+            <meta-data
+              android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.tileoverlay"
+              android:value="com.eclipsesource.tabris.maps.TileOverlayOperator" />              
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
