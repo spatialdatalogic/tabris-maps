@@ -1,12 +1,24 @@
 package com.eclipsesource.tabris.maps;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 
 import com.eclipsesource.tabris.android.TabrisActivity;
 import com.eclipsesource.tabris.android.TabrisContext;
 import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import com.eclipsesource.tabris.client.core.model.Properties;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler<T> {
 
@@ -46,9 +58,9 @@ public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler
         case "infoWindowVisible":
             Boolean infoWindowVisible = properties.getBoolean( "infoWindowVisible" );
             if (infoWindowVisible) {
-                marker.showInfoWIndow();
+                marker.showInfoWindow();
             } else {
-                marker.hideInfoWIndow();
+                marker.hideInfoWindow();
             }
             break; 
             
