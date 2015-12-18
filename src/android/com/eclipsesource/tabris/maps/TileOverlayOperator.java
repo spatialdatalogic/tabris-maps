@@ -52,7 +52,7 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
 
       MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
       if( mapHolderView != null ) {
-          Double properties.getDouble( "opacity" )
+          Double properties.getDouble( "opacity" );
           String tileUrlFormat = properties.getString("tileUrlFormat");
           Integer tileSize = properties.getInteger("tileSize");
     
