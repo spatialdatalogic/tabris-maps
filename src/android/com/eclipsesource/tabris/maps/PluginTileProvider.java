@@ -1,4 +1,4 @@
-package plugin.google.maps;
+package com.eclipsesource.tabris.maps;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
