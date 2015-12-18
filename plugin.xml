@@ -67,6 +67,9 @@
         <source-file src="src/android/com/eclipsesource/tabris/maps/MapValidator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/TileOverlayOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/TileOverlayPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PluginTileProvider.java" target-dir="src/com/eclipsesource/tabris/maps" />
 
     </platform>
 
