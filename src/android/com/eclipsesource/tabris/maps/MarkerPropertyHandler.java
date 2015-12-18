@@ -26,6 +26,57 @@ public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler
 
   @Override
   public void set( T marker, Properties properties ) {
-    System.out.println( "set on " + marker + ": " + properties );
+      System.out.println( "set: " + properties );
+      for( String key : properties.getAll().keySet() ) {
+        setProperty( key, marker, properties );
+      }
   }
+  
+  private void setProperty( String key, T marker, Properties properties ) {
+      switch( key ) {
+        case "color":
+            float[] hsv = new float[3];
+            List<Integer> arrayRGBA = properties.getList( "color", Integer.class );
+            Color.RGBToHSV(arrayRGBA.get(0), arrayRGBA.get(1), arrayRGBA.get(2), hsv);          
+            float hue = hsv[0];
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(hue));
+            break;
+            
+        case "anchor":
+            List<Float> anchor = properties.getList( "anchor", Float.class );
+            marker.setAnchor(anchor.get(0), anchor.get(1));
+            break;
+
+        case "infoWindowAnchor":
+            List<Float> infoWindowAnchor = properties.getList( "infoWindowAnchor", Float.class );
+            marker.setInfoWindowAnchor(infoWindowAnchor.get(0), infoWindowAnchor.get(1));
+            break;            
+            
+        case "opacity":
+            marker.setAlpha(properties.getFloat( "opacity" ));
+            break;
+            
+        case "rotation":
+            marker.setRotation(properties.getFloat( "rotation" ));
+            break;
+            
+        case "flat":
+            Boolean flat = properties.getBoolean( "flat" );
+            marker.setFlat(flat);
+            break;  
+            
+        case "visible":
+            marker.setVisible(properties.getBoolean( "visible" ));
+            break;  
+            
+        case "title":
+            marker.setTitle(properties.getString( "title" ));
+            break;      
+            
+        case "snippet":
+            marker.setSnippet(properties.getString( "snippet" ));
+            break;              
+      }
+  }  
+  
 }
