@@ -77,7 +77,6 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
 
   @Override
   public void destroy( TileOverlay tileOverlay ) {
-    Log.d( LOG_TAG, String.format( "Removing tileoverlay: %s (id: %s)", marker, marker.getId() ) );
     tileOverlay.remove();
   }
 
