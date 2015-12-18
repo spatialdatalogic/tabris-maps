@@ -20,7 +20,7 @@ public class PluginTileProvider implements TileProvider {
   private int tileSize = 256;
   private Paint tilePaint = new Paint(Paint.FILTER_BITMAP_FLAG);
   
-  public PluginTileProvider(String tileUrlFormat, double opacity, int tileSize) {
+  public PluginTileProvider(String tileUrlFormat, float opacity, int tileSize) {
     this.tileUrlFormat = tileUrlFormat;
     this.tileSize = tileSize;
     this.tilePaint.setAlpha((int) (opacity * 255));
@@ -91,7 +91,7 @@ public class PluginTileProvider implements TileProvider {
     return null;
   }
   
-  public void setOpacity(double opacity) {
+  public void setOpacity(float opacity) {
     this.tilePaint.setAlpha((int) (opacity * 255));
   }
   
