@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TileOverlayPropertyHandler<T extends Marker> implements IPropertyHandler<T> {
+public class TileOverlayPropertyHandler<T extends TileOverlay> implements IPropertyHandler<T> {
 
   private final Activity activity;
   private final TabrisContext context;
