@@ -57,6 +57,7 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
           Integer tileSize = properties.getInteger("tileSize");
     
           PluginTileProvider tileProvider = new PluginTileProvider(tileUrlFormat, opacity, tileSize);
+          tileOverlayPropertyHandler.setProvider(tileProvider);
       
           TileOverlayOptions options = new TileOverlayOptions();
           options.tileProvider(tileProvider);      
