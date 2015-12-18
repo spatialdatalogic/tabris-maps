@@ -65,11 +65,7 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
       } else {
           throw new RuntimeException( "Can not find parent map for tileoverlay with id: " + mapId );
       }      
-      
-      
-      
 
-      return null;
     } else {
       throw new RuntimeException( "Invalid TileOverlay properties: " + properties );
     }
