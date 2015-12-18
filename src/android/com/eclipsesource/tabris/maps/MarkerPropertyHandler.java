@@ -42,6 +42,16 @@ public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler
             marker.setIcon(BitmapDescriptorFactory.defaultMarker(hue));
             break;
             
+            
+        case "infoWindowVisible":
+            Boolean infoWindowVisible = properties.getBoolean( "infoWindowVisible" );
+            if (infoWindowVisible) {
+                marker.showInfoWIndow();
+            } else {
+                marker.hideInfoWIndow();
+            }
+            break; 
+            
         case "anchor":
             List<Float> anchor = properties.getList( "anchor", Float.class );
             marker.setAnchor(anchor.get(0), anchor.get(1));
