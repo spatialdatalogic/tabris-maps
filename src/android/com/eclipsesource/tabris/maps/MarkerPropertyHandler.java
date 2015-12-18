@@ -45,12 +45,14 @@ public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler
   }
   
   private void setProperty( String key, T marker, Properties properties ) {
+      System.out.println( "set: " + key );
       switch( key ) {
         case "color":
             float[] hsv = new float[3];
             List<Integer> arrayRGBA = properties.getList( "color", Integer.class );
             Color.RGBToHSV(arrayRGBA.get(0), arrayRGBA.get(1), arrayRGBA.get(2), hsv);          
             float hue = hsv[0];
+            System.out.println( "set hue: " + hue );
             marker.setIcon(BitmapDescriptorFactory.defaultMarker(hue));
             break;
             
