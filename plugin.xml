@@ -23,7 +23,7 @@
       <runs />
     </js-module>
     
-    <js-module src="www/tileOverlayWidget.js" name="marker">
+    <js-module src="www/tileOverlayWidget.js" name="tileoverlay">
       <runs />
     </js-module>
     <platform name="android">
