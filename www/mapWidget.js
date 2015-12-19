@@ -50,5 +50,8 @@ tabris.registerWidget("ESMap", {
   },
   createMarker: function(mapOptions) {
     return tabris.create("_ESMarker", mapOptions).appendTo(this);
+  },
+  createTileOverlay: function(mapOptions) {
+    return tabris.create("_ESTileOverlay", mapOptions).appendTo(this);
   }
 });
