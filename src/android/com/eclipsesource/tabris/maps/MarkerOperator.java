@@ -101,7 +101,7 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
     System.out.println( "get on " + marker + ": " + property );
     Object retVal = null;
     switch (property) {
-      case: "title": 
+      case "title": 
         retVal = marker.getTitle();
         break;
     }
