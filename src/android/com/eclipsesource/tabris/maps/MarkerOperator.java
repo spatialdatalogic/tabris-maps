@@ -63,6 +63,9 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
         && properties.hasProperty( "latLng" ) ) {
       mapId = properties.getString( PROP_PARENT );
       Marker marker = createMarker( properties.getList( "latLng", Double.class ) );
+      for( String key : properties.getAll().keySet() ) {
+        setProperty( key, marker, properties );
+      }
       Log.d( LOG_TAG, String.format( "New marker is: %s (id: %s)", marker, marker.getId() ) );
       return marker;
     } else {
