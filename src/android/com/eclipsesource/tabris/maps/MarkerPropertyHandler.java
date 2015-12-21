@@ -8,6 +8,7 @@ import android.graphics.Color;
 import com.eclipsesource.tabris.android.TabrisActivity;
 import com.eclipsesource.tabris.android.TabrisContext;
 import com.eclipsesource.tabris.android.TabrisWidgetPropertyHandler;
+import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import com.eclipsesource.tabris.client.core.model.Properties;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
