@@ -101,82 +101,15 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
 
   @Override
   public Object get( Marker marker, String property ) {
-    System.out.println( "get on " + marker + ": " + property );
-    Object retVal = null;
-    switch (property) {
-      case "title": 
-        retVal = marker.getTitle();
-        break;
-    }
-    return retVal;
+    return null;
   }
 
   @Override
   public void set( Marker marker, Properties properties ) {
-      System.out.println( "set: " + properties );
-      for( String key : properties.getAll().keySet() ) {
-        setProperty( key, marker, properties );
-      }
+
   }
   
-  private void setProperty( String key, Marker marker, Properties properties ) {
-      System.out.println( "set: " + key );
-      switch( key ) {
-        case "color":
-            float[] hsv = new float[3];
-            List<Integer> arrayRGBA = properties.getList( "color", Integer.class );
-            Color.RGBToHSV(arrayRGBA.get(0), arrayRGBA.get(1), arrayRGBA.get(2), hsv);          
-            float hue = hsv[0];
-            System.out.println( "set hue: " + hue );
-            marker.setIcon(BitmapDescriptorFactory.defaultMarker(hue));
-            break;
-            
-            
-        case "infoWindowVisible":
-            Boolean infoWindowVisible = properties.getBoolean( "infoWindowVisible" );
-            if (infoWindowVisible) {
-                marker.showInfoWindow();
-            } else {
-                marker.hideInfoWindow();
-            }
-            break; 
-            
-        case "anchor":
-            List<Float> anchor = properties.getList( "anchor", Float.class );
-            marker.setAnchor(anchor.get(0), anchor.get(1));
-            break;
 
-        case "infoWindowAnchor":
-            List<Float> infoWindowAnchor = properties.getList( "infoWindowAnchor", Float.class );
-            marker.setInfoWindowAnchor(infoWindowAnchor.get(0), infoWindowAnchor.get(1));
-            break;            
-            
-        case "opacity":
-            marker.setAlpha(properties.getFloat( "opacity" ));
-            break;
-            
-        case "rotation":
-            marker.setRotation(properties.getFloat( "rotation" ));
-            break;
-            
-        case "flat":
-            Boolean flat = properties.getBoolean( "flat" );
-            marker.setFlat(flat);
-            break;  
-            
-        case "visible":
-            marker.setVisible(properties.getBoolean( "visible" ));
-            break;  
-            
-        case "title":
-            marker.setTitle(properties.getString( "title" ));
-            break;      
-            
-        case "snippet":
-            marker.setSnippet(properties.getString( "snippet" ));
-            break;              
-      }
-  }    
 
   private Marker createMarker( List<Double> latLng ) {
     MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
