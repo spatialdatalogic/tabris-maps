@@ -137,6 +137,19 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
         return getCenter( mapHolderView );
       case "zoom":
         return getZoom( mapHolderView );
+
+      case "mapType":
+        return getMapType(mapHolderView);
+
+
+      case "myLocationEnabled":
+        return getGoogleMapSafely(mapHolderView).getMyLocationEnabled();
+      case "indoorEnabled":
+        return getGoogleMapSafely(mapHolderView).getIndoorEnabled();
+      case "trafficEnabled":
+        return getGoogleMapSafely(mapHolderView).getTrafficEnabled();
+
+
       default:
         return super.get( mapHolderView, property );
     }
@@ -152,6 +165,21 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
     GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
     return googleMap.getCameraPosition().zoom;
   }
+
+  private string getMapType( MapHolderView mapHolderView ) {
+    GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
+    String mapTypeLabel = "";
+    Integer mapType = googleMap.getMapType();
+    switch (mapType) {
+        case GoogleMap.MAP_TYPE_NONE: mapTypeLabel = "none"; break;
+        case GoogleMap.MAP_TYPE_HYBRID: mapTypeLabel = "hybrid"; break;
+        case GoogleMap.MAP_TYPE_NORMAL: mapTypeLabel = "normal"; break;
+        case GoogleMap.MAP_TYPE_SATELLITE: mapTypeLabel = "satellite"; break;
+        case GoogleMap.MAP_TYPE_TERRAIN: mapTypeLabel = "terrain"; break;
+    }
+    return mapTypeLabel;
+  }
+
 
   @NonNull
   private List<Double> getCenter( MapHolderView mapHolderView ) {
