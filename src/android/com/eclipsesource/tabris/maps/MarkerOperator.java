@@ -96,15 +96,6 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
     return googleMap;
   }
 
-  @Override
-  public Object get( Marker marker, String property ) {
-    return null;
-  }
-
-  @Override
-  public void set( Marker marker, Properties properties ) {
-
-  }
   
 
 
