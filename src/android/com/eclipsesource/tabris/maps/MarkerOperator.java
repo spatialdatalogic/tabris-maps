@@ -116,7 +116,7 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
       }
   }
   
-  private void setProperty( String key, T marker, Properties properties ) {
+  private void setProperty( String key, Marker marker, Properties properties ) {
       System.out.println( "set: " + key );
       switch( key ) {
         case "color":
