@@ -87,6 +87,7 @@
         <!-- Required frameworks -->
         <framework src="MapKit.framework" />
 
+        <dependency id="com.googlemaps.ios" url="https://bitbucket.org/nightstomp/cordova-plugin-googlemaps-sdk.git" commit="master" />
     </platform>
 
 </plugin>
