@@ -24,7 +24,7 @@ public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
 
 
   public MarkerPropertyHandler( Activity activity, TabrisContext context ) {
-    super( activity, tabrisContext );
+    super( activity, context );
   }
 
 
@@ -45,11 +45,11 @@ public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
             break;
 
         case "flat":
-            retVal = marker.getFlat();
+            retVal = marker.isFlat();
             break;
 
         case "visible":
-            retVal = marker.getVisible();
+            retVal = marker.isVisible();
             break;
 
         case "title":
@@ -75,7 +75,7 @@ public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
 
 
   
-  private void setProperty( String key, T marker, Properties properties ) {
+  private void setProperty( String key, Marker marker, Properties properties ) {
       System.out.println( "set: " + key );
       switch( key ) {
         case "color":
