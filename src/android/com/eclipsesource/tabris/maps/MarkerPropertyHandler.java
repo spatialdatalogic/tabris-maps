@@ -87,6 +87,9 @@ public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler
             List<Integer> arrayRGBA = properties.getList( "color", Integer.class );
             Color.RGBToHSV(arrayRGBA.get(0), arrayRGBA.get(1), arrayRGBA.get(2), hsv);          
             float hue = hsv[0];
+            if (hue <= 0){
+              hue = 1.0;  //gray, gmaps won't use hue value of 0
+            }
             marker.setIcon(BitmapDescriptorFactory.defaultMarker(hue));
             break;
 
