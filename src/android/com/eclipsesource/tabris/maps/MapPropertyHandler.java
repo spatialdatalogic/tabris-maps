@@ -143,11 +143,11 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
 
 
       case "myLocationEnabled":
-        return getGoogleMapSafely(mapHolderView).getMyLocationEnabled();
+        return getGoogleMapSafely(mapHolderView).isMyLocationEnabled();
       case "indoorEnabled":
-        return getGoogleMapSafely(mapHolderView).getIndoorEnabled();
+        return getGoogleMapSafely(mapHolderView).isIndoorEnabled();
       case "trafficEnabled":
-        return getGoogleMapSafely(mapHolderView).getTrafficEnabled();
+        return getGoogleMapSafely(mapHolderView).isTrafficEnabled();
 
 
       default:
@@ -166,7 +166,7 @@ public class MapPropertyHandler extends TabrisWidgetPropertyHandler<MapHolderVie
     return googleMap.getCameraPosition().zoom;
   }
 
-  private string getMapType( MapHolderView mapHolderView ) {
+  private String getMapType( MapHolderView mapHolderView ) {
     GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
     String mapTypeLabel = "";
     Integer mapType = googleMap.getMapType();
