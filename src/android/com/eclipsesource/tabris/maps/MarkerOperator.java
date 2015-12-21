@@ -99,10 +99,13 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
   @Override
   public Object get( Marker marker, String property ) {
     System.out.println( "get on " + marker + ": " + property );
+    Object retVal = null;
     switch (property) {
-      case: 'title': return marker.getTitle();
+      case: "title": 
+        retVal = marker.getTitle();
+        break;
     }
-    return null;
+    return retVal;
   }
 
   @Override
