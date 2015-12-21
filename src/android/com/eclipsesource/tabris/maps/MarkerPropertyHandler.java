@@ -20,17 +20,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
+public class MarkerPropertyHandler<T extends Marker> implements IPropertyHandler<T> {
 
+  private final Activity activity;
+  private final TabrisContext context;
 
   public MarkerPropertyHandler( Activity activity, TabrisContext context ) {
-    super( activity, context );
+    this.activity = activity;
+    this.context = context;
   }
 
 
 
   @Override
-  public Object get( Marker marker, String property ) {
+  public Object get( T marker, String property ) {
     System.out.println( "get on " + marker + ": " + property );
     Object retVal = null;
     switch (property) {
@@ -64,7 +67,7 @@ public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
   }
 
   @Override
-  public void set( Marker marker, Properties properties ) {
+  public void set( T marker, Properties properties ) {
       System.out.println( "set: " + properties );
       for( String key : properties.getAll().keySet() ) {
         setProperty( key, marker, properties );
@@ -75,7 +78,7 @@ public class MarkerPropertyHandler extends TabrisWidgetPropertyHandler<Marker> {
 
 
   
-  private void setProperty( String key, Marker marker, Properties properties ) {
+  private void setProperty( String key, T marker, Properties properties ) {
       System.out.println( "set: " + key );
       switch( key ) {
         case "color":
