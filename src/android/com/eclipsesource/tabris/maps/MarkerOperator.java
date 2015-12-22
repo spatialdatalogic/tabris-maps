@@ -30,6 +30,8 @@ import java.util.Map;
 
 import java.util.List;
 
+import com.eclipsesource.tabris.android.TabrisPropertyHandler;
+import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import static com.eclipsesource.tabris.client.core.ProtocolConstants.PROP_PARENT;
 import static com.eclipsesource.tabris.client.core.util.ValidationUtil.validateListenOperation;
 
@@ -49,6 +51,12 @@ public class MarkerOperator extends AbstractTabrisOperator<Marker> {
     this.tabrisContext = tabrisContext;
     markerPropertyHandler = new MarkerPropertyHandler( activity, tabrisContext );
   }
+
+
+   @Override
+   public TabrisPropertyHandler<Marker> getPropertyHandler() {
+     return markerPropertyHandler;
+   }
 
   @Override
   public String getType() {
