@@ -98,7 +98,7 @@ public class MapOperator extends AbstractTabrisOperator<MapHolderView> {
     switch( method ) {
       
       case "setPadding":
-        setPadding(mapHolderView, properties.getInteger("left"), properties.getInteger("top"), properties.getInteger("right"), properties.getInteger("bottom"))
+        setPadding(mapHolderView, properties.getInteger("left"), properties.getInteger("top"), properties.getInteger("right"), properties.getInteger("bottom"));
         break;
       
       default:
