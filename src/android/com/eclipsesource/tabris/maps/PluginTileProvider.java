@@ -28,6 +28,10 @@ public class PluginTileProvider implements TileProvider {
     this.tilePaint.setAlpha((int) (opacity * 255));
   }
   
+  public float getOpacity() {
+      return this.opacity;
+  }
+  
   @Override
   public Tile getTile(int x, int y, int zoom) {
 
