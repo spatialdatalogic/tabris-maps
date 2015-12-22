@@ -47,6 +47,14 @@ tabris.registerWidget("ESMap", {
     this._nativeCall("animateCameraToPointGroup", {
       "latLngPointGroup": latLngPointGroup
     });
+  },  
+  setPadding: function(left, top, right, bottom) {
+    this._nativeCall("setPadding", {
+      "left": left,
+      "top": top,
+      "right": right,
+      "bottom": bottom
+    });
   },
   createMarker: function(mapOptions) {
     return tabris.create("_ESMarker", mapOptions).appendTo(this);
