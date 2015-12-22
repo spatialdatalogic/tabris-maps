@@ -96,6 +96,11 @@ public class MapOperator extends AbstractTabrisOperator<MapHolderView> {
   @Override
   public Object call( MapHolderView mapHolderView, String method, Properties properties ) {
     switch( method ) {
+      
+      case "setPadding":
+        setPadding(mapHolderView, properties.getInteger("left"), properties.getInteger("top"), properties.getInteger("right"), properties.getInteger("bottom"))
+        break;
+      
       default:
         Log.d( LOG_TAG, String.format( "Call to unknown method \"%s\". Properties: %s", method, properties ) );
         break;
@@ -107,6 +112,12 @@ public class MapOperator extends AbstractTabrisOperator<MapHolderView> {
   public void destroy( MapHolderView mapHolderView ) {
     ( ( ViewGroup )mapHolderView.getParent() ).removeView( mapHolderView );
   }
+
+
+  private void setPadding( MapHolderView mapHolderView, Integer left, Integer top, Integer right, Integer bottom ) {
+    GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
+    googleMap.setPadding(left, top, right, bottom);
+  }  
 
   private void attachOnMapClickListener( MapHolderView mapHolderView ) {
     GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
