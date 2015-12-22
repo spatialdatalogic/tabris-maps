@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import android.util.Log;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -29,6 +30,7 @@ public class PluginTileProvider implements TileProvider {
   }
   
   public float getOpacity() {
+      Log.d( "PluginTileProvider", String.format( "PluginTileProvider getOpacity : %s ", this.opacity ) );
       return this.opacity;
   }
   
@@ -98,6 +100,7 @@ public class PluginTileProvider implements TileProvider {
   }
   
   public void setOpacity(float opacity) {
+    Log.d( "PluginTileProvider", String.format( "PluginTileProvider setOpacity : %s ", opacity ) );
     this.opacity = opacity;
     this.tilePaint.setAlpha((int) (opacity * 255));
   }
