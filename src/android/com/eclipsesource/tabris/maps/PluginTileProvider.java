@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.TileProvider;
 public class PluginTileProvider implements TileProvider {
   private String tileUrlFormat = null;
   private int tileSize = 256;
-  private float opacity = 1.0;
+  private float opacity = 1.0f;
   private Paint tilePaint = new Paint(Paint.FILTER_BITMAP_FLAG);
   
   public PluginTileProvider(String tileUrlFormat, float opacity, int tileSize) {
