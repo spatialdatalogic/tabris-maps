@@ -22,6 +22,12 @@
     <js-module src="www/markerWidget.js" name="marker">
       <runs />
     </js-module>
+    <js-module src="www/polylineWidget.js" name="polyline">
+      <runs />
+    </js-module>
+    <js-module src="www/polygonWidget.js" name="polygon">
+      <runs />
+    </js-module>    
     
     <js-module src="www/tileOverlayWidget.js" name="tileoverlay">
       <runs />
@@ -47,6 +53,12 @@
               android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.marker"
               android:value="com.eclipsesource.tabris.maps.MarkerOperator" />
             <meta-data
+              android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.polyline"
+              android:value="com.eclipsesource.tabris.maps.PolylineOperator" />              
+            <meta-data
+              android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.polygon"
+              android:value="com.eclipsesource.tabris.maps.PolygonOperator" />                 
+            <meta-data
               android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.tileoverlay"
               android:value="com.eclipsesource.tabris.maps.TileOverlayOperator" />              
         </config-file>
@@ -67,6 +79,11 @@
         <source-file src="src/android/com/eclipsesource/tabris/maps/MapValidator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PolylineOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PolylinePropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PolygonOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PolygonPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
+
         <source-file src="src/android/com/eclipsesource/tabris/maps/TileOverlayOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/TileOverlayPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/PluginTileProvider.java" target-dir="src/com/eclipsesource/tabris/maps" />
