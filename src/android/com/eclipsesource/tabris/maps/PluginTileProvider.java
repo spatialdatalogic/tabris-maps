@@ -98,6 +98,7 @@ public class PluginTileProvider implements TileProvider {
   }
   
   public void setOpacity(float opacity) {
+    this.opacity = opacity;
     this.tilePaint.setAlpha((int) (opacity * 255));
   }
   
