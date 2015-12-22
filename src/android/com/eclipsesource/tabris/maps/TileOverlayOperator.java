@@ -11,6 +11,8 @@ import com.eclipsesource.tabris.client.core.model.Properties;
 import com.eclipsesource.tabris.client.core.operation.CreateOperation;
 import com.eclipsesource.tabris.client.core.operation.ListenOperation;
 import com.eclipsesource.tabris.client.core.operation.SetOperation;
+import com.eclipsesource.tabris.android.TabrisPropertyHandler;
+import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
@@ -37,6 +39,11 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
     this.tabrisContext = tabrisContext;
     tileOverlayPropertyHandler = new TileOverlayPropertyHandler( activity, tabrisContext );
   }
+
+   @Override
+   public TabrisPropertyHandler<TileOverlay> getPropertyHandler() {
+     return tileOverlayPropertyHandler;
+   }
 
   @Override
   public String getType() {
@@ -85,15 +92,6 @@ public class TileOverlayOperator extends AbstractTabrisOperator<TileOverlay> {
     return googleMap;
   }
 
-  @Override
-  public Object get( TileOverlay tileOverlay, String property ) {
-    return null;
-  }
-
-  @Override
-  public void set( TileOverlay tileOverlay, Properties properties ) {
-    // do nothing
-  }
 
 
   private ObjectRegistry getObjectRegistry() {
