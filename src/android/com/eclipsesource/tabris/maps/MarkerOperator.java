@@ -14,6 +14,8 @@ import com.eclipsesource.tabris.client.core.model.Properties;
 import com.eclipsesource.tabris.client.core.operation.CreateOperation;
 import com.eclipsesource.tabris.client.core.operation.ListenOperation;
 import com.eclipsesource.tabris.client.core.operation.SetOperation;
+import com.eclipsesource.tabris.android.TabrisPropertyHandler;
+import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -25,13 +27,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
-
 import java.util.List;
 
-import com.eclipsesource.tabris.android.TabrisPropertyHandler;
-import com.eclipsesource.tabris.android.internal.toolkit.property.IPropertyHandler;
 import static com.eclipsesource.tabris.client.core.ProtocolConstants.PROP_PARENT;
 import static com.eclipsesource.tabris.client.core.util.ValidationUtil.validateListenOperation;
 
