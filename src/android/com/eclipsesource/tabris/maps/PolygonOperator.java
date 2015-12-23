@@ -68,8 +68,12 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
         && properties.hasProperty( PROP_PARENT )
         && properties.hasProperty( "geometry" ) ) {
       mapId = properties.getString( PROP_PARENT );
-      
-      PolygonOptions options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry"));
+      PolygonOptions options = null;
+      try {
+        options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry"));
+      } catch (JSONException e) {
+        throw new RuntimeException( "Invalid polygon properties: " + properties );
+      }
       
       if (properties.hasProperty("fillColor")) {
         options.fillColor(PluginUtil.TabrisColorToColor(properties.getList( "fillColor", Integer.class)));
