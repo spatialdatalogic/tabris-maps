@@ -84,7 +84,7 @@ public class PluginUtil {
   
 
   
-  public static PolygonOptions GeoJsonToPolygon(String geojson) {
+  public static PolygonOptions GeoJsonToPolygon(String geojson) throws JSONException {
       PolygonOptions options = new PolygonOptions();
       JSONObject feature = new JSONObject(geojson);
       JSONObject geom = null;
