@@ -88,6 +88,8 @@
         <source-file src="src/android/com/eclipsesource/tabris/maps/TileOverlayPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/PluginTileProvider.java" target-dir="src/com/eclipsesource/tabris/maps" />
 
+        <source-file src="src/android/com/eclipsesource/tabris/maps/PluginUtil.java" target-dir="src/com/eclipsesource/tabris/maps" />
+
     </platform>
 
     <platform name="ios">
