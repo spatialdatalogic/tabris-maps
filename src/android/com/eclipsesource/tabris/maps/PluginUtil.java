@@ -1,6 +1,6 @@
 //https://github.com/mapsplugin/cordova-plugin-googlemaps/blob/master/src/android/plugin/google/maps/PluginUtil.java
 
-package plugin.google.maps;
+package com.eclipsesource.tabris.maps;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -94,17 +94,18 @@ public class PluginUtil {
         geom = feature;  //assume just the geometry object has been passed
       }
       JSONArray coords = geom.getJSONArray("coordinates");
-      if (coords.length == 3) {
+      if (coords.length() == 3) {
         //multipart polygon, not supported
-        coords = coords[0];
+        coords = coords.getJSONArray(0);
       }
       
-      
+      int i = 0;
       for (i = 0; i < coords.length(); i++) {
         JSONArray ring = coords.getJSONArray(i);
         if (i == 0) {
           //outer ring
           List<LatLng> outer = new ArrayList<LatLng>();
+          int k = 0;
           for (k = 0; k < ring.length(); k++) {
             JSONArray point = ring.getJSONArray(k);
             outer.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
@@ -114,8 +115,9 @@ public class PluginUtil {
         } else {
           //inner holes
           List<LatLng> hole = new ArrayList<LatLng>();
-          for (k = 0; k < ring.length(); k++) {
-            JSONArray point = ring.getJSONArray(k);
+          int j = 0;
+          for (j = 0; j < ring.length(); j++) {
+            JSONArray point = ring.getJSONArray(j);
             hole.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
           }
           options.addHole(hole);        
@@ -131,20 +133,7 @@ public class PluginUtil {
    * @param arrayRGBA
    * @throws JSONException
    */
-  public static int parsePluginColor(List<Integer> arrayRGBA) throws JSONException {
-    return Color.argb(arrayRGBA.ge(3), arrayRGBA.ge(0), arrayRGBA.get(1), arrayRGBA.get(2));
-  }
 
-  public static List<LatLng> JSONArray2LatLngList(JSONArray points) throws JSONException  {
-    List<LatLng> path = new ArrayList<LatLng>();
-    JSONObject pointJSON;
-    int i = 0;
-    for (i = 0; i < points.length(); i++) {
-      pointJSON = points.getJSONObject(i);
-      path.add(new LatLng(points.get("lat"), pointJSON.getDouble("lng")));
-    }
-    return path;
-  }
 
   public static LatLngBounds JSONArray2LatLngBounds(JSONArray points) throws JSONException {
     List<LatLng> path = JSONArray2LatLngList(points);
