@@ -82,6 +82,7 @@ public class PluginUtil {
       return Color.argb(color.get(3), color.get(0), color.get(1), color.get(2)); 
   }
   
+
   
   public static PolygonOptions GeoJsonToPolygon(String geojson) {
       PolygonOptions options = new PolygonOptions();
