@@ -59,6 +59,9 @@ tabris.registerWidget("ESMap", {
   createMarker: function(mapOptions) {
     return tabris.create("_ESMarker", mapOptions).appendTo(this);
   },
+  createPolyline: function(mapOptions) {
+    return tabris.create("_ESPolyline", mapOptions).appendTo(this);
+  },    
   createPolygon: function(mapOptions) {
     return tabris.create("_ESPolygon", mapOptions).appendTo(this);
   },  
