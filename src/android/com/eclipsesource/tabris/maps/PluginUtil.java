@@ -85,9 +85,9 @@ public class PluginUtil {
 
   
   public static PolygonOptions GeoJsonToPolygon(String geojson) {
-      PolygonOptions options =
+      PolygonOptions options = new PolygonOptions();
       try {
-        options = new PolygonOptions();
+        
         JSONObject feature = new JSONObject(geojson);
         JSONObject geom = null;
         if (feature.has("geometry")) { 
