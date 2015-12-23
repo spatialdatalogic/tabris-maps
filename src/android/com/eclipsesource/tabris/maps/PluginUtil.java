@@ -83,6 +83,38 @@ public class PluginUtil {
   }
   
 
+public static PolylineOptions GeoJsonToPolyline(String geojson) {
+      PolylineOptions options = new PolylineOptions();
+      try {
+        
+        JSONObject feature = new JSONObject(geojson);
+        JSONObject geom = null;
+        if (feature.has("geometry")) { 
+          geom = feature.getJSONObject("geometry");
+        } else {
+          geom = feature;  //assume just the geometry object has been passed
+        }
+        JSONArray coords = geom.getJSONArray("coordinates");
+        if (coords.length() == 2) {
+          //multipart linestring, not supported
+          coords = coords.getJSONArray(0);
+        }
+        
+        int i = 0;
+        List<LatLng> path = new ArrayList<LatLng>();
+        for (i = 0; i < coords.length(); i++) {
+          JSONArray point = coords.getJSONArray(i);
+          path.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
+        }
+        options.addAll(path);
+        
+      } catch (JSONException e) {
+        options = null;
+      }
+      return options;
+  }
+
+
   
   public static PolygonOptions GeoJsonToPolygon(String geojson) {
       PolygonOptions options = new PolygonOptions();
