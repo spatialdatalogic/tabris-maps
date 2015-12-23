@@ -69,9 +69,9 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
         && properties.hasProperty( "geometry" ) ) {
       mapId = properties.getString( PROP_PARENT );
       PolygonOptions options = null;
-      try {
-        options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry"));
-      } catch (JSONException e) {
+
+      PolygonOptions options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry"));
+      if (options == null ) {
         throw new RuntimeException( "Invalid polygon properties: " + properties );
       }
       
