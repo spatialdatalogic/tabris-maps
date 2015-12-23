@@ -117,6 +117,7 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
   
 
   private void attachOnTapListener() {
+    /*
     MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
     GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
     Log.d( LOG_TAG, String.format( "Attaching listener to: %s", googleMap ) );
@@ -129,12 +130,15 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
         return true;
       }
     } );
+    */
   }
 
   private void removeOnTapListener() {
+    /*
     MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
     GoogleMap googleMap = getGoogleMapSafely( mapHolderView );
     googleMap.setOnPolygonClickListener( null );
+    */
   }
 
   private ObjectRegistry getObjectRegistry() {
