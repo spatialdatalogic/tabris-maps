@@ -52,9 +52,7 @@
             <meta-data
               android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.marker"
               android:value="com.eclipsesource.tabris.maps.MarkerOperator" />
-            <meta-data
-              android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.polyline"
-              android:value="com.eclipsesource.tabris.maps.PolylineOperator" />              
+            
             <meta-data
               android:name="com.eclipsesource.tabris.android.OPERATOR.com.eclipsesource.tabris.maps.polygon"
               android:value="com.eclipsesource.tabris.maps.PolygonOperator" />                 
@@ -79,8 +77,6 @@
         <source-file src="src/android/com/eclipsesource/tabris/maps/MapValidator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/MarkerPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
-        <source-file src="src/android/com/eclipsesource/tabris/maps/PolylineOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
-        <source-file src="src/android/com/eclipsesource/tabris/maps/PolylinePropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/PolygonOperator.java" target-dir="src/com/eclipsesource/tabris/maps" />
         <source-file src="src/android/com/eclipsesource/tabris/maps/PolygonPropertyHandler.java" target-dir="src/com/eclipsesource/tabris/maps" />
 
