@@ -95,7 +95,7 @@ public class PolygonPropertyHandler<T extends Polygon> implements TabrisProperty
             break;
             
         case "strokeWidth":
-            float width = properties.getFloat( "width" ) * this.density;
+            float width = properties.getFloat( "strokeWidth" ) * this.density;
             polygon.setStrokeWidth(width);
             break;
             
