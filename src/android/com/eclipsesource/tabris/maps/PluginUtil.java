@@ -34,10 +34,12 @@ import com.google.android.gms.maps.model.IndoorLevel;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.LatLngBounds.Builder;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class PluginUtil {
   
-
+  public static float density = Resources.getSystem().getDisplayMetrics().density;
 
   @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
   public static JSONObject location2Json(Location location) throws JSONException {
@@ -75,6 +77,48 @@ public class PluginUtil {
     params.put("hashCode", location.hashCode());
     return params;
   }
+  
+  public static int TabrisColorToColor(List<Integer> color) {
+      return Color.argb(color.get(3), color.get(0), color.get(1), color.get(2)); 
+  }
+  
+  
+  public static PolygonOptions GeoJsonToPolygon(String geojson) {
+      PolygonOptions options = new PolygonOptions();
+      JSONObject feature = new JSONObject(geojson);
+      JSONObject geom = feature.getJSONObject("geometry");
+      JSONArray coords = geom.getJSONArray("coordinates");
+      if (coords.length == 3) {
+        //multipart polygon, not supported
+        coords = coords[0];
+      }
+      
+      
+      for (i = 0; i < coords.length(); i++) {
+        JSONArray ring = coords.getJSONArray(i);
+        if (i == 0) {
+          //outer ring
+          List<LatLng> outer = new ArrayList<LatLng>();
+          for (k = 0; k < ring.length(); k++) {
+            JSONArray point = ring.getJSONArray(k);
+            outer.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
+          }
+          options.addAll(outer);
+        
+        } else {
+          //inner holes
+          List<LatLng> hole = new ArrayList<LatLng>();
+          for (k = 0; k < ring.length(); k++) {
+            JSONArray point = ring.getJSONArray(k);
+            hole.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
+          }
+          options.addHole(hole);        
+        }
+      }
+      return options;
+  }
+  
+  
   
   /**
    * return color integer value
