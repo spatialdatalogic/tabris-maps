@@ -84,44 +84,49 @@ public class PluginUtil {
   
 
   
-  public static PolygonOptions GeoJsonToPolygon(String geojson) throws JSONException {
-      PolygonOptions options = new PolygonOptions();
-      JSONObject feature = new JSONObject(geojson);
-      JSONObject geom = null;
-      if (feature.has("geometry")) { 
-        geom = feature.getJSONObject("geometry");
-      } else {
-        geom = feature;  //assume just the geometry object has been passed
-      }
-      JSONArray coords = geom.getJSONArray("coordinates");
-      if (coords.length() == 3) {
-        //multipart polygon, not supported
-        coords = coords.getJSONArray(0);
-      }
-      
-      int i = 0;
-      for (i = 0; i < coords.length(); i++) {
-        JSONArray ring = coords.getJSONArray(i);
-        if (i == 0) {
-          //outer ring
-          List<LatLng> outer = new ArrayList<LatLng>();
-          int k = 0;
-          for (k = 0; k < ring.length(); k++) {
-            JSONArray point = ring.getJSONArray(k);
-            outer.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
-          }
-          options.addAll(outer);
-        
+  public static PolygonOptions GeoJsonToPolygon(String geojson) {
+      PolygonOptions options =
+      try {
+        options = new PolygonOptions();
+        JSONObject feature = new JSONObject(geojson);
+        JSONObject geom = null;
+        if (feature.has("geometry")) { 
+          geom = feature.getJSONObject("geometry");
         } else {
-          //inner holes
-          List<LatLng> hole = new ArrayList<LatLng>();
-          int j = 0;
-          for (j = 0; j < ring.length(); j++) {
-            JSONArray point = ring.getJSONArray(j);
-            hole.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
-          }
-          options.addHole(hole);        
+          geom = feature;  //assume just the geometry object has been passed
         }
+        JSONArray coords = geom.getJSONArray("coordinates");
+        if (coords.length() == 3) {
+          //multipart polygon, not supported
+          coords = coords.getJSONArray(0);
+        }
+        
+        int i = 0;
+        for (i = 0; i < coords.length(); i++) {
+          JSONArray ring = coords.getJSONArray(i);
+          if (i == 0) {
+            //outer ring
+            List<LatLng> outer = new ArrayList<LatLng>();
+            int k = 0;
+            for (k = 0; k < ring.length(); k++) {
+              JSONArray point = ring.getJSONArray(k);
+              outer.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
+            }
+            options.addAll(outer);
+          
+          } else {
+            //inner holes
+            List<LatLng> hole = new ArrayList<LatLng>();
+            int j = 0;
+            for (j = 0; j < ring.length(); j++) {
+              JSONArray point = ring.getJSONArray(j);
+              hole.add(new LatLng(point.getDouble(1), point.getDouble(0)));   //geojson is in x/y order, not lat/lng
+            }
+            options.addHole(hole);        
+          }
+        }
+      } catch (JSONException e) {
+        options = null;
       }
       return options;
   }
