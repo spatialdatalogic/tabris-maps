@@ -72,13 +72,13 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
       PolygonOptions options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry", String.class ));
       
       if (properties.hasProperty("fillColor")) {
-        options.setFillColor(PluginUtil.TabrisColorToColor(properties.getList( "fillColor", Integer.class )));
+        options.fillColor(PluginUtil.TabrisColorToColor(properties.getList( "fillColor", Integer.class )));
       }
       if (properties.hasProperty("strokeColor")) {
-        options.setStrokeColor(PluginUtil.TabrisColorToColor(properties.getList( "strokeColor", Integer.class )));
+        options.strokeColor(PluginUtil.TabrisColorToColor(properties.getList( "strokeColor", Integer.class )));
       }    
       if (properties.hasProperty("strokeWidth")) {
-        options.setStrokeWidth(properties.getFloat( "strokeWidth", Float.class ) * PluginUtil.density);
+        options.strokeWidth(properties.getFloat( "strokeWidth", Float.class ) * PluginUtil.density);
       }
       
       MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
