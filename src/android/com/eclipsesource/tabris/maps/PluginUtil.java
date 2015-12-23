@@ -128,22 +128,7 @@ public class PluginUtil {
   
   
   
-  /**
-   * return color integer value
-   * @param arrayRGBA
-   * @throws JSONException
-   */
 
-
-  public static LatLngBounds JSONArray2LatLngBounds(JSONArray points) throws JSONException {
-    List<LatLng> path = JSONArray2LatLngList(points);
-    Builder builder = LatLngBounds.builder();
-    int i = 0;
-    for (i = 0; i < path.size(); i++) {
-      builder.include(path.get(i));
-    }
-    return builder.build();
-  }
   
   public static Bundle Json2Bundle(JSONObject json) {
     Bundle mBundle = new Bundle();
