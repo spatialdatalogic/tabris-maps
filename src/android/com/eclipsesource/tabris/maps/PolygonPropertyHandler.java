@@ -41,17 +41,21 @@ public class PolygonPropertyHandler<T extends Polygon> implements TabrisProperty
     switch (property) {
 
 
-        case "width":
-            retVal = polygon.getWidth() / this.density;
+        case "strokeWidth":
+            retVal = polygon.getStrokeWidth() / this.density;
             break;
             
         case "zindex":
             retVal = polygon.getZIndex();
             break;
             
-        case "color":
-            retVal = polygon.getColor();
-            break;            
+        case "fillColor":
+            retVal = polygon.getFillColor();
+            break;        
+            
+        case "strokeColor":
+            retVal = polygon.getStrokeColor();
+            break;    
             
         case "geodesic":
             retVal = polygon.isGeodesic();
