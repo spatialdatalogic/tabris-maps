@@ -86,7 +86,12 @@ public class PluginUtil {
   public static PolygonOptions GeoJsonToPolygon(String geojson) {
       PolygonOptions options = new PolygonOptions();
       JSONObject feature = new JSONObject(geojson);
-      JSONObject geom = feature.getJSONObject("geometry");
+      JSONObject geom = null;
+      if (feature.has("geometry")) { 
+        geom = feature.getJSONObject("geometry");
+      } else {
+        geom = feature;  //assume just the geometry object has been passed
+      }
       JSONArray coords = geom.getJSONArray("coordinates");
       if (coords.length == 3) {
         //multipart polygon, not supported
