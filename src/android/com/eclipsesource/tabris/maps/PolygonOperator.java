@@ -42,6 +42,7 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
   private final TabrisContext tabrisContext;
   private final PolygonPropertyHandler propertyHandler;
   private String mapId;
+  
 
   public PolygonOperator( Activity activity, TabrisContext tabrisContext ) {
     this.activity = activity;
@@ -65,10 +66,23 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
     Log.d( LOG_TAG, String.format( "Creating new polygon. %s", properties ) );
     if( properties != null
         && properties.hasProperty( PROP_PARENT )
-        && properties.hasProperty( "geojson" ) ) {
+        && properties.hasProperty( "geometry" ) ) {
       mapId = properties.getString( PROP_PARENT );
-      Polygon polygon = createPolygon( properties.getString( "geojson", String.class ) );
-      return polygon;
+      
+      PolygonOptions options = PluginUtil.GeoJsonToPolygon(properties.getString( "geometry", String.class ));
+      
+      if (properties.hasProperty("fillColor")) {
+        options.setFillColor(PluginUtil.TabrisColorToColor(properties.getList( "fillColor", Integer.class )));
+      }
+      if (properties.hasProperty("strokeColor")) {
+        options.setStrokeColor(PluginUtil.TabrisColorToColor(properties.getList( "strokeColor", Integer.class )));
+      }    
+      if (properties.hasProperty("strokeWidth")) {
+        options.setStrokeWidth(properties.getFloat( "strokeWidth", Float.class ) * PluginUtil.density);
+      }
+      
+      MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
+      return mapHolderView.getGoogleMap().addPolygon( options );      
     } else {
       throw new RuntimeException( "Invalid polygon properties: " + properties );
     }
@@ -101,18 +115,6 @@ public class PolygonOperator extends AbstractTabrisOperator<Polygon> {
   }
 
   
-
-
-  private Polygon createPolygon( String geojson ) {
-    MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
-    if( mapHolderView != null ) {
-      PolygonOptions options = new PolygonOptions();
-      //options.position( new LatLng( latLng.get( 0 ), latLng.get( 1 ) ) );
-      return mapHolderView.getGoogleMap().addPolygon( options );
-    } else {
-      throw new RuntimeException( "Can not find parent map for polygon with id: " + mapId );
-    }
-  }
 
   private void attachOnTapListener() {
     MapHolderView mapHolderView = getObjectRegistry().getObject( mapId, MapHolderView.class );
