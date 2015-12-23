@@ -61,9 +61,7 @@ public class PolygonPropertyHandler<T extends Polygon> implements TabrisProperty
             retVal = polygon.isGeodesic();
             break;
 
-        case "clickable":
-            retVal = polygon.isClickable();
-            break;
+
 
         case "visible":
             retVal = polygon.isVisible();
