@@ -1,4 +1,4 @@
-# tabris-maps
+# tabris-maps (tabris3-compat)
 tabris-maps is a custom widget for [Tabris.js](https://tabrisjs.com).
 tabris-maps comes in form of a Cordova plugin.
 
